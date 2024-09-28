@@ -2,11 +2,11 @@ import AdminPackagelisting from "@/components/admin/Main/Admin_Package_listing";
 import { db } from "@/core/client/db";
 import { unstable_cache } from "next/cache";
 
-const getAllListing = unstable_cache(
-  /**
-   * Asynchronously retrieves a list of agencies from the database.
-   * @returns {Promise<{ id: string; name: string; images: string[]; city: string; country: string; priority: number; city_priority: number; isCertified: boolean; userId: string; methodology: string; type: "Agency" }[]>} - A promise that resolves to an array of agency objects.
-   */
+/**
+ * Asynchronously retrieves a list of agencies from the database.
+ * @returns {Promise<{ id: string; name: string; images: string[]; city: string; country: string; priority: number; city_priority: number; isCertified: boolean; userId: string; methodology: string; type: "Agency" }[]>} - A promise that resolves to an array of agency objects.
+ */
+const getAllAgencyListings = unstable_cache(
   async () => {
     const data = await db.agency.findMany({
       select: {
@@ -22,14 +22,17 @@ const getAllListing = unstable_cache(
         methodology: true,
       },
     });
-    return data.map((d) => ({ ...d, type: "Agency" }));
+
+    return data.map((agency) => ({
+      ...agency,
+      type: "Agency", // Adding the "type" field explicitly as "Agency"
+    }));
   },
-  undefined,
-  { revalidate: 300, tags: ["admin-agency"] }
+  ["agency-listings"], // Cache key for this specific query
 );
 
-export default async function Page() {
-  const listings = await getAllListing();
+export default async function AgencyPage() {
+  const listings = await getAllAgencyListings(); // Await the cached data fetch
 
   return (
     <AdminPackagelisting
@@ -37,4 +40,4 @@ export default async function Page() {
       type="Agency"
     />
   );
-} 
+}
