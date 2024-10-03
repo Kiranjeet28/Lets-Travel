@@ -10,15 +10,15 @@ import { MdOutlineBookOnline, MdOutlineHotel, MdOutlineTravelExplore } from "rea
 function AdminSidebar() {
   const pathname = usePathname();
   const menuItems = [
-    { name: "Dashboard", icon: Home, href: "admin" },
-    { name: "Users", icon: Users, href: "admin/users" },
-    { name: "Agencies", icon: MdOutlineTravelExplore, href: "admin/agency" },
-    { name: "Hotels", icon: MdOutlineHotel, href: "admin/hotel" },
-    { name: "Dmc's", icon: FaRegMap, href: "admin/dmc" },
+    { name: "Dashboard", icon: Home, href: "/admin" },
+    { name: "Users", icon: Users, href: "/admin/users" },
+    { name: "Agencies", icon: MdOutlineTravelExplore, href: "/admin/agency" },
+    { name: "Hotels", icon: MdOutlineHotel, href: "/admin/hotel" },
+    { name: "Dmc's", icon: FaRegMap, href: "/admin/dmc" },
     {
       name: "Influencer's",
       icon: MdOutlineBookOnline,
-      href: "admin/influencer",
+      href: "/admin/influencer",
     },
     { name: "Help Desk", icon: HelpCircle, href: "admin/helpdesk" },
     { name: "Report", icon: FileText, href: "admin/report" },
