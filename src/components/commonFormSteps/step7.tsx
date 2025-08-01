@@ -52,7 +52,7 @@ const Step7 = ({
       // Upload to Cloudinary using the signature
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY!);
+      formData.append("api_key", process.env.CLOUDINARY_URL!);
       formData.append("signature", signature);
       formData.append("timestamp", timestamp);
       formData.append("folder", "top10travels");
@@ -168,7 +168,7 @@ const Step7 = ({
           </div>
         </div>
       </div>
-      <div className="space-y-2">
+      {/* <div className="space-y-2">
         <Label className="text-sm font-medium">
           Promotional Video Upload
           <p className="text-green-400 font-semibold">
@@ -197,7 +197,7 @@ const Step7 = ({
         >
           Upload
         </Button>
-      </div>
+      </div> */}
       <div>
         <Label className="text-sm font-medium">
           Image Upload
