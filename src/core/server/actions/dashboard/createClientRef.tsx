@@ -3,7 +3,7 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { db } from "@/core/client/db";
 import getSessionorRedirect from "@/core/utils/getSessionorRedirect";
-import { ClientReference, PastProject } from "@prisma/client";
+import { ClientReference } from "@prisma/client";
 export const createClientRefAction = async ({
   agencyId,
   dmcId,
@@ -56,7 +56,7 @@ export const createClientRefAction = async ({
           },
         });
     }
-    revalidatePath("/dashboard/" + agencyId ?? dmcId);
+    revalidatePath("/dashboard/" + (agencyId ?? dmcId));
     return { success: "Past Project Added Succesfully." };
   } catch (error) {
     return { error: "Something went wrong." };
