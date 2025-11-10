@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { ArrowDownUp } from "lucide-react";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FileText, HelpCircle, Home, List, LogOut, Users } from "react-feather";
@@ -40,7 +41,7 @@ const SmallScreenSidebar = () => {
       </SheetTrigger>
       <SheetContent side={"left"} className="flex flex-col h-full">
         <SheetHeader>
-          <SheetTitle>LOGO</SheetTitle>
+          <SheetTitle>   <Link href="/"><Image src="/logo.png" height={50} width={50} alt="Logo" /></Link></SheetTitle>
         </SheetHeader>
         <div className="py-4 flex mt-[3vw] flex-col gap-3">
           {pathname.startsWith("/admin") &&

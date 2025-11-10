@@ -2,6 +2,7 @@
 
 import { ArrowDownUp } from "lucide-react";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HelpCircle, Home, List, LogOut } from "react-feather";
@@ -37,7 +38,7 @@ function AgencySidebar({
   return (
     <div className="lg:w-[17vw] h-[100vh] left-0 top-0 fixed text-black flex flex-col border-r-2  border-[#7F7F7F] px-4">
       <div className="p-2 mt-5 mb-12">
-        <Link href="/">LOGO</Link>
+        <Link href="/"><Image src="/logo.png" height={50} width={50} alt="Logo" /></Link>
       </div>
       <nav className="flex-grow  ">
         <ul className="">

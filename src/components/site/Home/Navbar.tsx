@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const navMenus = [
   {
@@ -167,12 +168,7 @@ function Navbar() {
     <>
       <nav className="flex bg-white/80 backdrop-blur-sm justify-between items-center h-[60px] w-[100vw] fixed top-0 z-40 px-2 md:px-3 lg:px-6 xl:px-8">
         <div className="navbar-start">
-          <Link
-            href="/"
-            className="text-2xl font-bold"
-          >
-            LOGO
-          </Link>
+          <Link href="/"><Image src="/logo.png" height={50} width={50} alt="Logo" /></Link>
         </div>
         <ul className="ml-32 hidden lg:flex gap-12 justify-end items-center">
           {navMenus.map((el, i) => (
