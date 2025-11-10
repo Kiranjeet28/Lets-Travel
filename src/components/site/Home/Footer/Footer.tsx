@@ -8,6 +8,7 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {
@@ -17,11 +18,13 @@ import {
   FaTwitter,
   FaLinkedin,
   FaXTwitter,
+  FaGithub,
 } from "react-icons/fa6";
+import { IoBrowsers, IoLink } from "react-icons/io5";
 
 const contactInfo = [
   { icon: Phone, text: "+91 9358XXXXX" },
-  { icon: Mail, text: "Top10travelagency@gmail.com" },
+  { icon: Mail, text: "kiranjeetkour@gmail.com" },
   { icon: MapPin, text: "123 Travel Street, City, Country" },
 ];
 
@@ -42,19 +45,19 @@ const top10Links: { name: string; link: string }[] = [
 
 const socialIcons = [
   {
-    href: "https://www.facebook.com",
-    icon: FaFacebook,
+    href: "https://www.linkedin.com/in/kiranjeet28",
+    icon: FaLinkedin,
   },
   {
-    href: "https://www.youtube.com/@TravelTop10",
-    icon: FaYoutube,
+    href: "https://portfolokiranjeet28.vercel.app",
+    icon: IoLink,
   },
   {
-    href: "https://x.com/traveltop_10",
-    icon: FaXTwitter,
+    href: "https://github.com/kiranjeet28",
+    icon: FaGithub,
   },
   {
-    href: "https://www.instagram.com/traveltop10.in/",
+    href: "https://www.instagram.com/k_jeet_x",
     icon: FaInstagram,
   },
 ];
@@ -81,26 +84,16 @@ function Footer() {
                 >
                   <path d="M96 0V47L48 94H0V47L48 0H96Z" />
                 </svg>
-                LOGO
+                <Link href="/"><Image src="/logo.png" height={50} width={50} alt="Logo" /></Link>
               </Link>
             </div>
 
             <p className="mb-6 cursor-default sm:pr-8 font-semibold">
-              Experience the Extraordinary: Top Travel Experts, Hotels, and
+              Experience the Extraordinary:Let Travel Experts, Hotels, and
               Agencies at Your Fingertips
             </p>
 
-            <div className="flex flex-col items-start justify-center gap-4">
-              {contactInfo?.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex hover:scale-110 transition-all duration-500 cursor-pointer items-center justify-center gap-2 font-semibold"
-                >
-                  <item.icon className="w-5 h-5 stroke-black" />
-                  {item.text}
-                </div>
-              ))}
-            </div>
+           
           </div>
 
           {/* Company Links */}
@@ -122,7 +115,7 @@ function Footer() {
           {/* Top 10 Links */}
           <div>
             <div className="mb-4 font-bold uppercase tracking-widest text-xl md:text-2xl">
-              TOP 10
+              Lets Travel
             </div>
             <nav className="flex flex-col gap-4">
               {top10Links?.map((item, index) => (
@@ -158,7 +151,7 @@ function Footer() {
         </div>
 
         <div className="cursor-default select-none border-t py-8 text-center text-sm font-semibold">
-          All rights Reserved © Top 10 Travel, 2021
+          All rights Reserved © Kiranjeet Kour 2024
         </div>
       </footer>
     </div>

@@ -228,7 +228,7 @@ function HomeHero() {
       ref={divref}
       className="relative w-full h-fit min-h-[50vh] md:max-h-screen min-[768]:h-[calc(100vh+60px)] max-[820]:h-fit lg:h-fit xl:h-[calc(100vh+60px)] pt-10 lg:pt-0 px-2 md:px-3 lg:px-6 xl:px-8 "
     >
-      <div className="h-full flex flex-col md:gap-3 lg:gap-0 gap-1.5 justify-start pt-16 md:pt-24 lg:pt-32 pb-24 xl:pt-40 w-full overflow-x-hidden">
+      <div className="h-full flex flex-col md:gap-3 lg:gap-0 gap-1.5 justify-start pt-16 md:pt-24 lg:pt-2 pb-24 xl:pt-40 w-full overflow-x-hidden">
         <h3
           id="firstLine"
           aria-hidden
@@ -278,7 +278,7 @@ function HomeHero() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.4, type: "spring" }}
-          className="w-full pt-14 md:pt-10 lg:overflow-hidden lg:pt-24 md:max-w-[430px] lg:max-w-[730px]"
+          className="w-full pt-14 md:pt-10 lg:overflow-hidden lg:pt-2  md:max-w-[430px] lg:max-w-[730px]"
         >
           <div className="w-full ml-1 xs:ml-4 flex items-end justify-start">
             <div className="relative max-w-48 xs:max-w-60 h-7 xs:h-9 flex items-center justify-center">

@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -10,7 +11,14 @@ import {
 import { HomeContext } from "@/hooks/context/HomeContext";
 import { cn } from "@/lib/utils";
 import { SearchIcon } from "lucide-react";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
+
+const FILTER_OPTIONS = [
+  { key: "AGENCY", label: "Agencies" },
+  { key: "HOTEL", label: "Hotels" },
+  { key: "DMC", label: "DMC's" },
+  { key: "Influencer", label: "Influencers" },
+] as const;
 
 function SearchingAndFilter() {
   const {
@@ -24,124 +32,94 @@ function SearchingAndFilter() {
     allCountries,
   } = useContext(HomeContext);
 
-  const toggle = (key: "DMC" | "AGENCY" | "HOTEL" | "Influencer") => {
-    toggleVisible(key);
-  };
   const handleFind = () => {
     window.scrollTo({
       top: window.innerHeight + 150,
       behavior: "smooth",
     });
   };
-  return (
-    <div className="grid z-20 text-black justify-center w-full mx-auto relative bottom-0 text-center font-Lato py-10">
-      <div className="p-2 px-3 bg-white w-[200px] md:w-[300px] rounded-t-xl m-auto border-2 border-gray-600 border-b-0">
-        <h1 className="font-bold">FIND YOUR TOP 10</h1>
-      </div>
-      <div className="text-center border-2 border-gray-700 px-6 md:px-10 py-4 flex flex-col md:flex-row w-[300px] sm:w-[450px] gap-5 md:w-full xl:w-[80vw] bg-white shadow-lg rounded-xl md:rounded-b-xl  sm:rounded-xl min-h-fit justify-center items-center">
-        <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2">
-          <Select
-            value={selectedCountry}
-            onValueChange={(val) => setCountry(val)}
-          >
-            <SelectTrigger className="w-full md:min-w-[200px]">
-              <strong>DMC :</strong>
-              <SelectValue placeholder="Countries" />
-            </SelectTrigger>
-            <SelectContent>
-              {allCountries.map((country) => (
-                <SelectItem
-                  key={country}
-                  value={country}
-                >
-                  {country}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select
-            value={selectedCity}
-            onValueChange={(val) => {
-              setCity(val);
-            }}
-          >
-            <SelectTrigger className="w-full md:min-w-[200px]">
-              <SelectValue placeholder="cities" />
-            </SelectTrigger>
-            <SelectContent>
-              {allCities.map((city) => (
-                <SelectItem
-                  key={city}
-                  value={city}
-                >
-                  {city}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <ul className="flex gap-2 md:gap-5 flex-wrap md:flex-nowrap justify-center md:justify-between items-center">
-          <li>
-            <Button
-              className={cn(
-                visible.AGENCY
-                  ? "bg-primary hover:bg-primary/80 text-primary-foreground hover:text-primary-foreground"
-                  : ""
-              )}
-              onClick={() => toggle("AGENCY")}
-              variant="ghost"
-            >
-              Agencies
-            </Button>
-          </li>
-          <li>
-            <Button
-              className={cn(
-                visible.HOTEL
-                  ? "bg-primary hover:bg-primary/80 text-primary-foreground hover:text-primary-foreground"
-                  : ""
-              )}
-              onClick={() => toggle("HOTEL")}
-              variant="ghost"
-            >
-              Hotels
-            </Button>
-          </li>
-          <li>
-            <Button
-              className={cn(
-                visible.DMC
-                  ? "bg-primary hover:bg-primary/80 text-primary-foreground hover:text-primary-foreground"
-                  : ""
-              )}
-              onClick={() => toggle("DMC")}
-              variant="ghost"
-            >
-              DMC&apos;s
-            </Button>
-          </li>
 
-          <li>
+  return (
+    <div className="relative z-20 w-full py-10 mx-auto font-Lato">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="mx-auto w-fit mb-0">
+          <div className="px-6 py-2 bg-white rounded-t-xl border-2 border-gray-600 border-b-0">
+            <h1 className="font-bold text-sm md:text-base text-black whitespace-nowrap">
+              FIND YOUR TOP 10
+            </h1>
+          </div>
+        </div>
+
+        {/* Main Search Container */}
+        <div className="bg-white border-2 border-gray-700 rounded-b-xl md:rounded-xl shadow-lg overflow-hidden">
+          <div className="p-4 md:p-6 space-y-4">
+            {/* Location Selectors */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <Select value={selectedCountry} onValueChange={setCountry}>
+                <SelectTrigger className="w-full">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-sm">Country:</strong>
+                    <SelectValue placeholder="Select Country" />
+                  </div>
+                </SelectTrigger>
+                <SelectContent>
+                  {allCountries.map((country) => (
+                    <SelectItem key={country} value={country}>
+                      {country}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <Select value={selectedCity} onValueChange={setCity}>
+                <SelectTrigger className="w-full">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-sm">City:</strong>
+                    <SelectValue placeholder="Select City" />
+                  </div>
+                </SelectTrigger>
+                <SelectContent>
+                  {allCities.map((city) => (
+                    <SelectItem key={city} value={city}>
+                      {city}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+              {FILTER_OPTIONS.map(({ key, label }) => (
+                <Button
+                  key={key}
+                  onClick={() => toggleVisible(key)}
+                  variant="ghost"
+                  size="sm"
+                  className={cn(
+                    "px-4 py-2 transition-all",
+                    visible[key]
+                      ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+                      : "hover:bg-gray-100"
+                  )}
+                >
+                  {label}
+                </Button>
+              ))}
+            </div>
+
+            {/* Search Button */}
             <Button
-              className={cn(
-                visible.Influencer
-                  ? "bg-primary hover:bg-primary/80 text-primary-foreground hover:text-primary-foreground"
-                  : ""
-              )}
-              onClick={() => toggle("Influencer")}
-              variant="ghost"
+              onClick={handleFind}
+              className="w-full md:w-auto px-8 py-5 rounded-full font-semibold"
+              size="lg"
             >
-              Influencers
+              <SearchIcon className="w-4 h-4 mr-2" />
+              FIND
             </Button>
-          </li>
-        </ul>
-        <Button
-          onClick={handleFind}
-          className="px-8 py-4 inline-flex items-center justify-center gap-2 rounded-full w-full md:w-fit"
-        >
-          <SearchIcon />
-          FIND
-        </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
