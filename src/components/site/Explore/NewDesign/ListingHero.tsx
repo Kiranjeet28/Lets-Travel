@@ -59,13 +59,13 @@ function ListingHero({
 
   console.log(pathname);
   const image =
-    pathname === "/Hotels"
+    pathname === "/hotels"
       ? HotelsImg
-      : pathname === "/Agency"
+      : pathname === "/agency"
       ? AgencyImg
-      : pathname === "/DMC"
+      : pathname === "/dMC"
       ? DMCImg
-      : pathname === "/Influencers"
+      : pathname === "/influencers"
       ? InfluencersImg
       : AgencyImg;
 

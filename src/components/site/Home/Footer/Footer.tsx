@@ -37,10 +37,10 @@ const companyLinks = [
 ];
 
 const top10Links: { name: string; link: string }[] = [
-  { name: "Travel Agencies", link: "/Agency" },
-  { name: "Hotels", link: "/Hotels" },
-  { name: "DMC", link: "/DMC" },
-  { name: "Influencers", link: "/Influencers" },
+  { name: "Travel Agencies", link: "/agency" },
+  { name: "Hotels", link: "/hotels" },
+  { name: "DMC", link: "/dMC" },
+  { name: "Influencers", link: "/influencers" },
 ];
 
 const socialIcons = [

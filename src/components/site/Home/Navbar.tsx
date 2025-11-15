@@ -20,23 +20,23 @@ import Image from "next/image";
 const navMenus = [
   {
     title: "Agencies",
-    link: "/Agency",
+    link: "/agency",
   },
   {
     title: "Hotels",
-    link: "/Hotels",
+    link: "/hotels",
   },
   {
     title: "DMCs",
-    link: "/DMC",
+    link: "/dMC",
   },
   {
     title: "Influencers",
-    link: "/Influencers",
+    link: "/influencers",
   },
   {
     title: "Contact us",
-    link: "/ContactUs",
+    link: "/contactus",
   },
 ];
 

@@ -56,7 +56,7 @@ const CarouselCard = ({ agency }: { agency: AgencyApiResult }) => (
       </span>
       <p className="text-sm line-clamp-3">{agency.methodology}</p>
       <Link
-        href={`/Agency/${agency.id}`}
+        href={`/agency/${agency.id}`}
         className="mt-auto border border-gray-900 text-sm cursor-pointer rounded-lg px-4 py-2 hover:bg-gray-100 transition-colors"
       >
         View More
@@ -180,7 +180,7 @@ const TopTenAgencies = () => {
             )}
           </div>
         </div>
-        <Link href={`/Agency`}>
+        <Link href={`/agency`}>
           <motion.div
             className="bg-black px-5 py-2 rounded-md mt-6 mb-5 mx-auto hover:bg-gray-800 w-fit transition-colors text-white font-bold"
             whileHover={{ scale: 1.1 }}
